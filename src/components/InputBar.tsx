@@ -12,9 +12,9 @@ function InputBar({ sendMessage, loading }: Props) {
 
     const inputRef = useRef<HTMLInputElement>(null)
     const sendClicked = () => {
+        if (msgText.trim() === '') return
         sendMessage(msgText)
         setMsgText('')
-        
     }
 
     useEffect(() => {
