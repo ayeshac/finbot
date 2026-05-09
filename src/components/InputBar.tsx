@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 
 interface Props {
@@ -14,8 +14,15 @@ function InputBar({ sendMessage, loading }: Props) {
     const sendClicked = () => {
         sendMessage(msgText)
         setMsgText('')
-        inputRef.current?.focus()
+        
     }
+
+    useEffect(() => {
+        if (!loading) {
+            inputRef.current?.focus()
+        }
+    }, [loading])
+    
     return (
         <div className="input-bar">
             <input
