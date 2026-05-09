@@ -1,7 +1,7 @@
 
 
 export async function sendMessage(prompt: string): Promise<string> {
-    const response = await fetch('http://localhost:5000/api/chat', {
+    const response = await fetch('finbot-production-ae5d.up.railway.app/api/chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
