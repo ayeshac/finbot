@@ -1,22 +1,25 @@
-import React, { useState } from 'react'
+
+import React, { useState, useRef } from 'react'
+
 
 interface Props {
     sendMessage: (text: string) => void
     loading: boolean
 }
 
-
-function InputBar({sendMessage,loading}:Props) {
+function InputBar({ sendMessage, loading }: Props) {
     const [msgText, setMsgText] = useState('')
-    
 
+    const inputRef = useRef<HTMLInputElement>(null)
     const sendClicked = () => {
         sendMessage(msgText)
         setMsgText('')
+        inputRef.current?.focus()
     }
     return (
         <div className="input-bar">
             <input
+                ref={inputRef}
                 onKeyDown={(e) => e.key === 'Enter' && sendClicked()}
                 disabled={loading}
                 type='text'
