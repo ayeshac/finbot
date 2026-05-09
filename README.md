@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+# FinBot 💰 — AI Financial Assistant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A finance-scoped AI chatbot built with React, TypeScript, and Google Gemini API. FinBot answers questions related to personal finance, investing, budgeting, loans, and banking — and politely declines anything outside of finance.
 
-## Available Scripts
+## Live Demo
+[View Live App](https://finbot-eosin.vercel.app/)
 
-In the project directory, you can run:
+## Why I Built This
+I built FinBot to explore LLM integration in a frontend context, combining my experience in React/TypeScript with modern AI APIs. The finance theme was a natural fit given my background working on financial services projects including ICICI Two Wheeler Loans.
 
-### `npm start`
+## Tech Stack
+| Layer | Technology |
+|---|---|
+| Frontend | React.js, TypeScript |
+| Backend | Node.js, Express |
+| AI | Google Gemini API |
+| Styling | CSS3 |
+| Frontend Deployment | Vercel |
+| Backend Deployment | Railway |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+- 💬 Conversational chat UI with message bubbles
+- 🔒 Finance-scoped responses — filters unrelated queries client-side before API call
+- ⚡ Typing indicator while bot is responding
+- 📱 Responsive design
+- 🔐 API key secured on backend — never exposed to client
+- ↩️ Auto-focus input after each message
+- 🔄 Auto-scroll to latest message
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Architecture
+User → React Frontend (Vercel)
+↓
+Express Backend (Railway)
+↓
+Google Gemini API
+## Security
+The Gemini API key is stored securely on the backend (Railway environment variables) and never exposed to the client. The frontend communicates with the backend via REST API.
 
-### `npm test`
+## Running Locally
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+```bash
+cd server
+npm install
+# create .env file with GEMINI_API_KEY=your_key_here
+node index.js
+```
 
-### `npm run build`
+### Frontend
+```bash
+npm install
+# create .env file with REACT_APP_API_URL=http://localhost:5000
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## What I Learned
+- Integrating LLM APIs (Google Gemini) into a React frontend
+- Securing API keys using a Node.js/Express backend layer
+- Prompt engineering using system instructions to scope AI behaviour
+- Understanding and mitigating prompt injection vulnerabilities
+- Deploying a full stack app across Vercel and Railway
