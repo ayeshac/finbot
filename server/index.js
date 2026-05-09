@@ -30,7 +30,8 @@ app.post('/api/chat',async (req,res)=>{
         res.json({ reply: text })
     }
     catch(e) {
-        res.status(500).json({ error: 'Something went wrong' })
+        console.error('Gemini error:', e)
+        res.status(200).json({ reply: "Sorry, I'm having trouble responding. Please try again." })
     }
     
    
